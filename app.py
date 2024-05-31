@@ -64,7 +64,17 @@ knn1.fit(X1_train, y1_train)
 KNNtuned1 = KNeighborsClassifier(leaf_size=5,metric='manhattan',n_neighbors=3,weights='uniform')
 KNNtuned1.fit(X1_train, y1_train)
 
-st.title('Prediction Sirtuin6 Molecules')
+st.title('Prediction Sirtuin6 Small Molecules')
+st.markdown("""
+Tugas Besar PKB Kelompok 1:
+- Valentino Hartanto 1301223020
+- Gede Bagus Krishnanditya Merta 1301223088 
+- Raka Aditya Waluya 1301220192
+
+Deskripsi: 
+\nModel dibangun dengan tujuan untuk mengklasifikasikan molekul menjadi dua kategori High BFE dan Low BFE berdasarkan parameter yang relevan. Dengan demikian, model ini akan membantu dalam pemilihan molekul-molekul yang memiliki potensi sebagai kandidat inhibitor protein target.
+""")
+st.write('')
 
 SC5 = st.number_input('Masukkan nilai SC-5: ', value=0.0, step=0.00005, format='%.5f')
 SP6 = st.number_input('Masukkan nilai SP-6: ', value=0.0, step=0.00005, format='%.5f')
@@ -73,6 +83,7 @@ minHaaCH = st.number_input('Masukkan nilai minHaaCH: ', value=0.0, step=0.00005,
 maxwHBa = st.number_input('Masukkan nilai maxwHBa: ', value=0.0, step=0.00005, format='%.5f')
 FMF = st.number_input('Masukkan nilai FMF: ', value=0.0, step=0.00005, format='%.5f')
 
+st.write('')
 if st.button('Predict Class'):
     data = pd.DataFrame({
     'SC-5': [SC5],
@@ -90,7 +101,8 @@ if st.button('Predict Class'):
     y_pred_tuned_knn_scaled = KNNtuned.predict(data)
     y_pred_knn_unscaled = knn1.predict(data)
     y_pred_tuned_knn_unscaled = KNNtuned1.predict(data)
-
+    
+    st.write('')
     st.write(f'**Decision Tree:** ')
     st.write(f'Prediksi Class menggunakan Decision Tree: **{y_pred_normal_tree[0].replace('_', ' ')}**')
     st.write(f'Prediksi Class menggunakan Pruned Decision Tree: **{y_pred_prune_tree[0].replace('_', ' ')}**')
