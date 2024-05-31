@@ -97,8 +97,8 @@ if st.button('Predict Class'):
 
     y_pred_normal_tree = normal_tree.predict(data)
     y_pred_prune_tree = prePrune_tree.predict(data)
-    y_pred_knn_scaled = knn.predict(data)
-    y_pred_tuned_knn_scaled = KNNtuned.predict(data)
+    y_pred_knn_scaled = knn.predict(data_Scaled)
+    y_pred_tuned_knn_scaled = KNNtuned.predict(data_Scaled)
     y_pred_knn_unscaled = knn1.predict(data)
     y_pred_tuned_knn_unscaled = KNNtuned1.predict(data)
     
