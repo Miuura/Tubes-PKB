@@ -12,10 +12,6 @@ df = pd.read_csv('SIRTUIN6.csv')
 X = df.drop('Class', axis=1)
 y = df['Class']
 
-def scaleData(data, scaler):
-    dataScaled = scaler.transform(data)
-    return dataScaled
-
 def handle_outliers(data, column):
     Q1 = data[column].quantile(0.25)
     Q3 = data[column].quantile(0.75)
@@ -93,7 +89,7 @@ if st.button('Predict Class'):
     'maxwHBa': [maxwHBa],
     'FMF' : [FMF]
     })
-    data_Scaled = scaleData(data, scaler)
+    data_Scaled = scaler.transform(data)
 
     y_pred_normal_tree = normal_tree.predict(data)
     y_pred_prune_tree = prePrune_tree.predict(data)
